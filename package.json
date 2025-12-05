@@ -1,0 +1,12 @@
+{
+  "name": "npm-hello",
+  "version": "1.0.0",
+  "description": "Hello World NPM Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "is-odd": "3.0.1"
+  }
+}
