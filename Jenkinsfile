@@ -21,11 +21,14 @@ pipeline {
                     
                     // Inject the auth token into the environment for .npmrc to use
                     withEnv(["NPM_AUTH_TOKEN=${auth}"]) {
-                        sh 'npm cache clean --force'
-                        sh 'npm install --verbose'
+                        sh 'rm -rf node_modules'
+                        sh 'rm -rf /var/lib/jenkins/.npm'
+                        // sh 'npm install  --loglevel=silly --dry-run'
+                        sh 'npm install --loglevel=silly --prefer-online --no-cache'
                         // Verify that packages were resolved from JFrog
                         sh 'grep "resolved" package-lock.json || true'
                         sh 'npm start'
+
                     }
                 }
             }
